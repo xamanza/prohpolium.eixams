@@ -1,0 +1,163 @@
+#N canvas 16 197 1331 546 10;
+#X msg 36 -746 disconnect;
+#X floatatom 36 -468 5 0 0 0 - - -;
+#X floatatom 75 -467 5 0 0 0 - - -;
+#X floatatom 273 -574 5 0 0 0 - - -;
+#X obj 36 -502 sendOSC;
+#X text 68 -788 1 connectar 2 enviar missatges;
+#X text 33 -767 desconnectar;
+#X text 119 -767 connectar al mateix ordinador en un port (5555);
+#X text 162 -718 connectar amb totes les maqiunes de la subxarxa en
+un port (broadcast);
+#X text 270 -533 enviar missatges amb notacio OSC;
+#X text 88 -502 enviador de paquets OSC;
+#X text 268 -469 1 triar el port d' escolta (dumpOSC 5555) 2 enrutat
+de missatges (OSCroute) 3 presa de decisions;
+#X obj 279 -202 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 272 -665 send /humidity1;
+#X msg 272 -645 send /humidity2;
+#X msg 273 -615 send /temp1;
+#X msg 273 -595 send /temp2;
+#X msg 273 -555 send /accel/;
+#X text 716 -741 1 triar el port d' escolta (dumpOSC 5555) 2 enrutat
+de missatges (OSCroute) 3 presa de decisions;
+#X obj 907 -651 print descartat1;
+#X obj 717 -651 OSCroute /velocitat /posicio;
+#X obj 717 -579 OSCroute /tortuga /llebre;
+#X obj 878 -579 print descartat2v;
+#X obj 717 -511 print velocitatTortuga \$1;
+#X obj 790 -540 print velocitatLlebre \$1;
+#X obj 1007 -579 OSCroute /tortuga /llebre;
+#X obj 1168 -579 print descartat2p;
+#X obj 1080 -539 print posicioLlebre \$1;
+#X obj 1007 -511 print posicioTortuga \$1;
+#X obj 696 -506 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 770 -539 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 986 -511 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 1050 -535 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 717 -689 dumpOSC+ 5555;
+#X obj 300 -347 OSCroute /humidity1 /humidity2 /temp1 /temp2 /accel
+;
+#X obj 300 -275 OSCroute;
+#X obj 300 -207 print humidity1 \$1;
+#X obj 405 -174 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 426 -247 OSCroute;
+#X obj 545 -135 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 566 -208 OSCroute;
+#X obj 671 -107 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 692 -180 OSCroute;
+#X obj 721 -207 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 742 -280 OSCroute;
+#X obj 639 -349 print descartat-_-;
+#X obj 426 -179 print humidity2 \$1;
+#X obj 566 -140 print temp1 \$1;
+#X obj 692 -112 print temp2 \$1;
+#X obj 742 -212 print accel \$1;
+#X obj 324 -230 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0
+10 -262144 -1 -1 0 256;
+#X obj 446 -197 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0
+10 -262144 -1 -1 0 256;
+#X obj 587 -158 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0
+10 -262144 -1 -1 0 256;
+#X obj 712 -132 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0
+10 -262144 -1 -1 0 256;
+#X msg 119 -745 connect localhost 7110;
+#X obj 300 -385 dumpOSC 7110;
+#X msg 163 -691 connect 192.168.0.255 7110;
+#X msg 977 -400 eC4pU4PmeqqN4KFdPcjG;
+#X msg 95 -306 connect 192.168.1.36;
+#X obj 539 69 unpack;
+#X floatatom 539 119 0 0 0 0 - - -;
+#X floatatom 553 96 0 0 0 0 - - -;
+#X obj 539 29 route 1 2 3 4;
+#X obj 622 69 unpack;
+#X floatatom 622 119 0 0 0 0 - - -;
+#X floatatom 636 96 0 0 0 0 - - -;
+#X obj 706 69 unpack;
+#X floatatom 706 119 0 0 0 0 - - -;
+#X floatatom 720 96 0 0 0 0 - - -;
+#X obj 418 -2 fiddle~ 1024 1 20 3;
+#X obj 189 -57 adc~;
+#X obj 226 -18 *~;
+#X obj 256 -56 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 557 155 osc~;
+#X obj 642 262 dac~;
+#X obj 627 230 *~;
+#X obj 418 266 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X msg 934 -353 sudo ifconfig enp1s0 192.168.0.23;
+#X connect 0 0 4 0;
+#X connect 3 0 17 0;
+#X connect 4 0 1 0;
+#X connect 4 1 2 0;
+#X connect 13 0 4 0;
+#X connect 14 0 4 0;
+#X connect 15 0 4 0;
+#X connect 16 0 4 0;
+#X connect 17 0 4 0;
+#X connect 20 0 21 0;
+#X connect 20 1 25 0;
+#X connect 20 2 19 0;
+#X connect 21 0 23 0;
+#X connect 21 0 29 0;
+#X connect 21 1 24 0;
+#X connect 21 1 30 0;
+#X connect 21 2 22 0;
+#X connect 25 0 28 0;
+#X connect 25 0 31 0;
+#X connect 25 1 27 0;
+#X connect 25 1 32 0;
+#X connect 25 2 26 0;
+#X connect 33 0 20 0;
+#X connect 34 0 35 0;
+#X connect 34 1 38 0;
+#X connect 34 2 40 0;
+#X connect 34 3 42 0;
+#X connect 34 4 44 0;
+#X connect 34 5 45 0;
+#X connect 35 0 12 0;
+#X connect 35 0 36 0;
+#X connect 35 0 50 0;
+#X connect 38 0 37 0;
+#X connect 38 0 46 0;
+#X connect 38 0 51 0;
+#X connect 40 0 39 0;
+#X connect 40 0 47 0;
+#X connect 40 0 52 0;
+#X connect 42 0 41 0;
+#X connect 42 0 48 0;
+#X connect 42 0 53 0;
+#X connect 44 0 43 0;
+#X connect 44 0 49 0;
+#X connect 54 0 4 0;
+#X connect 55 0 34 0;
+#X connect 56 0 4 0;
+#X connect 59 0 60 0;
+#X connect 59 1 61 0;
+#X connect 60 0 73 0;
+#X connect 62 0 59 0;
+#X connect 62 1 63 0;
+#X connect 62 2 66 0;
+#X connect 63 0 64 0;
+#X connect 63 1 65 0;
+#X connect 66 0 67 0;
+#X connect 66 1 68 0;
+#X connect 69 4 62 0;
+#X connect 70 0 71 0;
+#X connect 70 1 71 0;
+#X connect 71 0 69 0;
+#X connect 72 0 71 1;
+#X connect 73 0 75 0;
+#X connect 75 0 74 0;
+#X connect 75 0 74 1;
+#X connect 76 0 75 1;

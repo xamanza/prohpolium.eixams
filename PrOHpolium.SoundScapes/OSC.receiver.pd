@@ -1,0 +1,136 @@
+#N canvas 0 81 957 537 10;
+#X declare -lib mrpeach;
+#X obj 80 373 outlet;
+#X obj 255 397 outlet;
+#X obj 447 384 outlet;
+#X obj 613 383 outlet;
+#X obj 102 49 import mrpeach;
+#X obj 309 73 r OSC_in;
+#X obj 379 37 r senderID;
+#X floatatom 79 301 5 0 0 0 - - -;
+#N canvas 602 138 739 383 OSC_receiver 0;
+#X obj 37 101 unpackOSC;
+#X text 112 121 from;
+#X text 59 35 RECEIVER;
+#X floatatom 88 165 10 0 0 1 millisecond_delay - -;
+#X obj 37 193 s OSC_in;
+#X obj 37 65 udpreceive 56789;
+#X floatatom 363 265 3 0 0 0 - - -;
+#X floatatom 390 265 3 0 0 0 - - -;
+#X floatatom 417 265 3 0 0 0 - - -;
+#X floatatom 444 265 3 0 0 0 - - -;
+#X floatatom 471 266 5 0 0 0 - - -;
+#X obj 363 239 unpack 0 0 0 0 0;
+#X floatatom 242 186 9 0 0 0 - - -;
+#X obj 423 212 tgl 15 0 empty empty empty 17 7 0 10 -4034 -1 -1 0 1
+;
+#X floatatom 302 212 9 0 0 0 - - -;
+#X text 150 210 total bytes received:;
+#X text 320 264 from:;
+#X obj 242 153 route received total from multicast;
+#X obj 471 297 s senderID;
+#X connect 0 0 4 0;
+#X connect 0 1 3 0;
+#X connect 5 0 0 0;
+#X connect 5 1 17 0;
+#X connect 9 0 18 0;
+#X connect 11 0 6 0;
+#X connect 11 1 7 0;
+#X connect 11 2 8 0;
+#X connect 11 3 9 0;
+#X connect 11 4 10 0;
+#X connect 17 0 12 0;
+#X connect 17 1 14 0;
+#X connect 17 2 11 0;
+#X connect 17 3 13 0;
+#X restore 100 75 pd OSC_receiver;
+#X obj 82 272 hsl 128 15 -10 10 0 0 empty empty movA -2 -8 0 10 -262144
+-1 -1 0 1;
+#X floatatom 254 316 5 0 0 0 - - -;
+#X obj 256 292 hsl 128 15 -10 10 0 0 empty empty movB -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 449 293 hsl 128 15 -10 10 0 0 empty empty movC -2 -8 0 10 -262144
+-1 -1 0 1;
+#X floatatom 444 323 5 0 0 0 - - -;
+#X obj 603 211 vsl 15 128 -10 10 0 0 empty empty movD 0 -9 0 10 -262144
+-1 -1 0 1;
+#X text 412 103 <-argument:ultim numero de la ip del client.mirar OSC_receiver.
+;
+#X floatatom 599 351 5 0 0 0 - - -;
+#X obj 670 211 vsl 15 128 0 10 0 0 empty empty Energia 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 672 421 outlet;
+#X floatatom 672 370 5 0 0 0 - - -;
+#X obj 870 260 sel 0;
+#X msg 795 309 1;
+#X msg 763 309 0;
+#X obj 723 362 spigot;
+#X obj 753 340 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 843 198 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-262144 -1 -1 0 256;
+#X obj 806 169 min 1;
+#X obj 868 401 sel 0;
+#X msg 793 450 1;
+#X msg 761 450 0;
+#X obj 751 481 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 190 386 sel 0;
+#X msg 115 435 1;
+#X msg 83 435 0;
+#X obj 73 466 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 113 474 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 159 476 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 451 54 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-262144 -1 -1 0 256;
+#X text 515 52 escriure a client_and_X el numero x q aparegui;
+#X obj 310 102 client_and 13;
+#X obj 825 88 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 825 120 outlet;
+#X obj 451 77 s IPID_1;
+#X connect 5 0 39 0;
+#X connect 6 0 37 0;
+#X connect 6 0 39 1;
+#X connect 7 0 0 0;
+#X connect 7 0 31 0;
+#X connect 9 0 7 0;
+#X connect 10 0 1 0;
+#X connect 11 0 10 0;
+#X connect 12 0 13 0;
+#X connect 13 0 2 0;
+#X connect 14 0 16 0;
+#X connect 16 0 3 0;
+#X connect 17 0 19 0;
+#X connect 17 0 23 0;
+#X connect 17 0 26 0;
+#X connect 17 0 27 0;
+#X connect 19 0 18 0;
+#X connect 20 0 22 0;
+#X connect 20 1 21 0;
+#X connect 21 0 24 0;
+#X connect 22 0 24 0;
+#X connect 24 0 23 1;
+#X connect 25 0 20 0;
+#X connect 26 0 25 0;
+#X connect 27 0 29 0;
+#X connect 27 1 28 0;
+#X connect 28 0 30 0;
+#X connect 29 0 30 0;
+#X connect 31 0 33 0;
+#X connect 31 1 32 0;
+#X connect 32 0 34 0;
+#X connect 32 0 36 0;
+#X connect 33 0 34 0;
+#X connect 33 0 35 0;
+#X connect 37 0 42 0;
+#X connect 39 0 9 0;
+#X connect 39 1 11 0;
+#X connect 39 2 12 0;
+#X connect 39 3 14 0;
+#X connect 39 4 17 0;
+#X connect 39 5 40 0;
+#X connect 40 0 41 0;
